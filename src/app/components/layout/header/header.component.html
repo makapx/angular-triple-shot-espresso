@@ -1,0 +1,13 @@
+<p-menubar [model]="menuItem">
+    
+  <ng-template #item let-item let-root="root">
+    <a
+      pRipple
+      class="flex items-center p-menubar-item-link"
+      routerLink="{{item.url}}"
+      routerLinkActive="router-link-active"
+    >
+      <span>{{ item.label }}</span>
+    </a>
+  </ng-template>
+</p-menubar>
