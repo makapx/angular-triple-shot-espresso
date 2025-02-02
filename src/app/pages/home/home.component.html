@@ -1,1 +1,17 @@
 <app-header></app-header>
+<app-container>
+  <section class="posts-container">
+    @for (post of posts; track post.metadata.id) {
+    <a
+      routerLink="/post/{{ post.metadata.id }}"
+      routerLinkActive="router-link-active"
+    >
+      <p-card [header]="post.metadata.title">
+        <p>
+          {{ post.metadata.date | date : "shortDate" }}
+        </p>
+      </p-card>
+    </a>
+    } @empty { Nessun post trovato }
+  </section>
+</app-container>

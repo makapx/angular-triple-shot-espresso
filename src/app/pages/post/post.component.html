@@ -1,0 +1,8 @@
+<app-header> </app-header>
+<app-container>
+  <p-breadcrumb class="max-w-full" [model]="breadcrumb" />
+  <p-divider></p-divider>
+  <p-fieldset [legend]="post?.metadata?.title">
+    <p [innerHTML]="post?.content | safeHtml"></p>
+  </p-fieldset>
+</app-container>

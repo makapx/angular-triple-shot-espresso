@@ -1,0 +1,14 @@
+a {
+  text-decoration: none;
+}
+.posts-container {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 768px) {
+  .posts-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
