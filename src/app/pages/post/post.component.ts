@@ -11,6 +11,7 @@ import { MenuItem } from 'primeng/api';
 import { DividerModule } from 'primeng/divider';
 import { FieldsetModule } from 'primeng/fieldset';
 import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
+import { CommentComponent } from '../../components/comment/comment.component';
 
 @Component({
   selector: 'app-post',
@@ -21,7 +22,8 @@ import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
     BreadcrumbModule,
     DividerModule,
     FieldsetModule,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    CommentComponent
   ],
   templateUrl: './post.component.html',
   styleUrl: './post.component.css',

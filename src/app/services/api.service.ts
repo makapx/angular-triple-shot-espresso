@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Post } from '../types/post';
+import { UntypedFormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -27,5 +28,25 @@ export class ApiService {
    */
   getPostById(postId: string): Observable<Post> {
     return this.http.get<Post>(`${this.apiUrl}/post/${postId}`);
+  }
+
+  /**
+   * Get bad words
+   *
+   * @returns { status: number; badWords: Array<string> } - bad words
+   */
+  getBadWords() {
+    return this.http.get<{ status: number; badWords: Array<string> }>(
+      `${this.apiUrl}/bad-words`
+    );
+  }
+
+  /**
+   * Post comment
+   * 
+   * @param {UntypedFormGroup} commentFormGroup 
+   */
+  postComment(commentFormGroup: UntypedFormGroup) {
+    // Call endpoint 
   }
 }

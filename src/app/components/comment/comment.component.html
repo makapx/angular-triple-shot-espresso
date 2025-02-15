@@ -1,0 +1,52 @@
+<form [formGroup]="commentFormGroup" class="comment-form">
+  <div class="rating-group">
+    <p-rating formControlName="rating" />
+    <!-- No rating -->
+    @if((commentFormGroup.get('rating')?.hasError('required') ||
+    commentFormGroup.get('rating')?.hasError('min'))){ *Dai un voto da 1 a 5 }
+  </div>
+  <p-floatlabel variant="in">
+    <textarea
+      rows="5"
+      cols="50"
+      pTextarea
+      formControlName="description"
+      style="resize: none"
+      class="h-full"
+    ></textarea>
+    <label for="description">
+      Il tuo commento:
+      {{ characterCount }} / 200
+    </label>
+  </p-floatlabel>
+  <div class="comment-form-submit">
+    <p-button
+      label="Invia"
+      [disabled]="
+        description?.hasError('forbiddenWords') ||
+        description?.hasError('required') ||
+        description?.hasError('maxLength') ||
+        commentFormGroup.get('rating')?.hasError('min') ||
+        commentFormGroup.controls['rating'].hasError('max') ||
+        commentFormGroup.get('rating')?.hasError('required')
+      "
+      (onClick)="onSubmit()"
+    ></p-button>
+  </div>
+</form>
+
+<!-- Forbidden -->
+@if(description && description?.hasError('forbiddenWords')){
+<p-message severity="error">
+  Sembra che ci siano delle parole poco carine in questo commento. Mi dispiace
+  ma non puoi scriverle!
+</p-message>
+}
+<!-- Empty input -->
+@if(description && description?.hasError('required') && !description.untouched){
+<p-message severity="error">
+  Qui non c'è scritto niente. Dovresti scrivere qualcosa
+</p-message>
+} @if(showSubmitMessage){
+<p-message severity="success"> Grazie per il tuo commento! </p-message>
+}

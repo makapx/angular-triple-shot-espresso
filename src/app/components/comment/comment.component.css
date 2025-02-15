@@ -1,0 +1,18 @@
+textarea {
+  width: 100%;
+}
+
+.rating-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.comment-form {
+  margin: 1rem 0;
+}
+
+.comment-form-submit {
+  display: flex;
+  justify-content: end;
+}
